@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .center {
+      text-align: center;
+    }
+
+    .border {
+      border: 1px solid;
+    }
+
+    .margin {
+      margin: 20px;
+    }
+
+    .color {
+      background: pink;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="demo" v-bind:class="{center: isCenter, border: hasBorder, margin: hasMargin, color: isColor}">
+    Hello World!
+  </div>
+  <div class="demo02" v-bind:class="classObject">
+    Hello Vue!
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    var vm = new Vue({
+      el: ".demo",
+      data: {
+        isCenter: true,
+        hasBorder: true,
+        hasMargin: true,
+        isColor: true,
+        classObject: {
+          center: true,
+          border: true,
+          margin: true,
+          color: true
+        }
+      }
+    })
+    var vm = new Vue({
+      el: ".demo02",
+      data: {
+        isCenter: true,
+        hasBorder: true,
+        hasMargin: true,
+        isColor: true,
+        classObject: {
+          center: true,
+          border: true,
+          margin: true,
+          color: true
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
