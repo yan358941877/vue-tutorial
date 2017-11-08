@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="example">
+    <h1>{{a}}</h1>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    // 创建一个Vue实例
+    var vm = new Vue({
+      el: '#example',
+      data: {
+        a: 'vue-1',
+        b: 'vue-2',
+        c: [1,2,3,4,5,6]
+      }
+    });
+    // Vue实例的属性: 注意 vm.c === vm.$data.c
+    console.log(vm.a);
+    console.log(vm.b);
+    console.log(vm.$el);
+    console.log(vm.$data);
+    console.log(vm.$data.a);
+    console.log(vm.$data.b);
+    console.log(vm.c === vm.$data.c);
+  </script>
+</body>
+
+</html>
