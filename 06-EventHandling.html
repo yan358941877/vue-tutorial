@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="demo" v-on:click="warn">
+    <button v-on:click.stop="warn">
+      test button
+    </button>
+    <button v-on:click="warn">
+      test button
+    </button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    var vm = new Vue({
+      el: "#demo",
+      data: {
+
+      },
+      methods: {
+        warn: function (event) {
+          console.dir(event.srcElement)
+          // event.stopPropagation()
+        }
+      }
+    })
+    /*
+    注意：
+    当使用v-on:click="warn"的形式来监听点击事件时，当点击时默认会向warn方法传递一个event参数
+    当使用v-on:click="warn()"的形式来监听点击事件时，当点击时不会向warn方法传递参数
+    如果需要向监听器传递event对象，则需要使用v-on:click="warn($event)"的形式来监听点击事件
+    */
+  </script>
+</body>
+
+</html>
