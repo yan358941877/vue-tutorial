@@ -10,6 +10,8 @@
 
 <body>
   <div id="demo">{{ fullName }}</div>
+
+  <div id="demo02">{{ fullName }}</div>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script>
     var vm = new Vue({
@@ -25,6 +27,19 @@
         },
         lastName: function(val){
           this.fullName = this.firstName + ' ' + val
+        }
+      }
+    })
+
+    var vm02 = new Vue({
+      el: "#demo02",
+      data: {
+        firstName: "Foo",
+        lastName: "Bar"
+      },
+      computed: {
+        fullName: function(){
+          return this.firstName +' ' + this.lastName;
         }
       }
     })
