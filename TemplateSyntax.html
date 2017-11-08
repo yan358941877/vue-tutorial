@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="example01">
+    <h1>Message: {{ msg }}</h1>
+  </div>
+  <div id="example02">
+    <h2 v-once>Message never change: {{ msg }}</h2>
+  </div>
+  <div id="example03" v-html="dangerousHTML"></div>
+
+  <!-- <div id="example04" v-bind:title="title"> -->
+  <div id="example04" :title="title">
+    <h2>Test v-bind 指令</h2>
+  </div>
+  <!-- <div id="example05" v-on:click="handleClick"> -->
+  <div id="example05" @click="handleClick">
+    <button>测试按钮</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    // 插值语法 Mustache 语法
+    var vm = new Vue({
+      el: '#example01',
+      data: {
+        msg: "Hello Vue!"
+      }
+    })
+    // 一次性插值
+    var vm02  = new Vue({
+      el: '#example02',
+      data: {
+        msg: "hello world!!"
+      }
+    })
+    // 原始HTML，在页面中输出html代码
+    var vm03 = new Vue({
+      el: "#example03",
+      data: {
+        dangerousHTML: '<h1>HAHAHAHAAH</h1>'
+      }
+    })
+    // 对于HTML的特性（例如id、class、title等），需要使用 v-bind 指令
+    var vm04  = new Vue({
+      el: "#example04",
+      data: {
+        title: "测试v-bind指令"
+      }
+    })
+
+    // 监听DOM事件，需要使用v-on指令
+    var vm05 = new Vue({
+      el: "#example05",
+      data: {
+        msg: '测试按钮',
+        handleClick: function(){
+          console.log('点击了按钮')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
