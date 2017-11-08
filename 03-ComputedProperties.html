@@ -13,6 +13,9 @@
     <p>原信息: "{{ message }}"</p>
     <p>翻转信息: "{{ reversedMessage }}"</p>
   </div>
+  <div id="demo">
+    {{ fullName }}
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script>
     var vm = new Vue({
@@ -23,6 +26,27 @@
       computed: {
         reversedMessage: function(){
           return this.message.split('').reverse().join('')
+        }
+      }
+    })
+
+    // 计算属性默认只有getter，可以在需要的时候提供setter
+    var demo = new Vue({
+      el: "#demo",
+      data: {
+        firstName: 'Foo',
+        lastName: 'Bar'
+      },
+      computed: {
+        fullName: {
+          get: function(){
+            return this.firstName + ' ' + this.lastName
+          },
+          set: function(val){
+            var names = val.split(' ')
+            this.firstName = names[0]
+            this.lastName = names[1]
+          }
         }
       }
     })
