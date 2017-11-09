@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="demo01">
+    <my-component></my-component>
+    <component-child :component-message="1"></component-child>
+  </div>
+
+  <div id="counter-event-example">
+    <p>{{ total }}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    
+  </div>
+  
+  <div id="test">
+    <button v-on:click="incrementTotal">aaa</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    Vue.component('my-component', {
+      template: '<div>Vue Component</div>'
+    });
+    Vue.component('component-child', {
+      props: ['componentMessage'],
+      template: '<div>{{ componentMessage }}</div>'
+    })
+    var vm = new Vue({
+      el: '#demo01',
+      data: {
+        message: 'hello component from parent'
+      }
+    })
+
+
+    Vue.component('button-counter', {
+      template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+      data: function () {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        incrementCounter: function () {
+          this.counter += 1
+          this.$emit('increment')
+        }
+      },
+    })
+    new Vue({
+      el: '#counter-event-example',
+      data: {
+        total: 0
+      },
+      methods: {
+        incrementTotal: function () {
+          this.total += 1
+        }
+      }
+    })
+
+    new Vue({
+      el: '#test',
+      methods: {
+        incrementTotal: function(){
+          this.$emit('increment')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
